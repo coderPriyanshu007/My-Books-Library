@@ -7,9 +7,9 @@ Welcome to my personal book review website! 📚✨ Here, I share the books I've
 
 Here are some preview images of the site:
 
-Home page : ![{51C773B7-58DF-4F98-AE73-4F19AA130339}](https://github.com/user-attachments/assets/bec10896-2037-433a-8844-3d157b9b52f6)
-Add book page : ![{20C5D8A3-0DBC-45AD-B391-A255BF8143FA}](https://github.com/user-attachments/assets/85b9323c-422b-45aa-9cc9-b982893aff5a)
-Notes page :  ![{B74FF368-D17D-4FB8-B359-D00E11160FB6}](https://github.com/user-attachments/assets/d20ca84c-34a9-4733-aba7-eb9fc2e7bfdb)
+Home page : ![](public/assets/images/home.png)
+Add book page : ![](public/assets/images/add.png)
+Notes page :  ![](public/assets/images/notes.png)
 
 ## Features
 
