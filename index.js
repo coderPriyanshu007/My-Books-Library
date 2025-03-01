@@ -18,7 +18,7 @@ async function getCover(isbn) {
     return response.config.url;
   } catch (error) {
     console.error("Error fetching book cover:", error.message);
-    return "/assets/images/fallback.png";
+    return "/assets/images/fallback.png"; 
   }
 }
 
