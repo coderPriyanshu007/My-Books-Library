@@ -1,0 +1,291 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poiret+One&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Nunito", sans-serif;
+}
+a{
+    text-decoration: none;
+    color: #bc9aee;
+}
+a:hover{
+    text-decoration: underline;
+}
+a h1{
+    color: #d2cece;
+}
+a h1:hover{
+    color: #a777ed;
+}
+html,body{
+    min-height: 100%;
+    width: 100%;
+    color: #d2cece;
+}
+
+main{
+    max-width: 900px;
+    background-color: transparent;
+    margin: 20px auto;
+    /* backdrop-filter: blur(8px); */
+    padding: 50px;
+    min-height: 100%;
+}
+.name{
+    font-size: 5rem;
+    font-family: "Bebas Neue", serif;
+    font-weight: 300;
+    color: rgb(222, 220, 220);
+    opacity: 0.7;
+    /* background-color: #9b62f1; */
+}
+main h2{
+    font-size: 2rem;
+    margin-top: 50px;
+    font-weight: 900;
+    font-family: 'Poiret One', serif;
+}
+.intro p{
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+.sort{
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+.book{
+    padding: 50px 0;
+}
+
+.books-container{
+    padding-top: 50px;
+    margin-top: 10px;
+    color: #d2cece;
+    border-top: 2px solid #d2cece;
+    overflow: hidden;
+}
+.sort div span{
+    padding: 20px;
+    cursor: pointer;
+}
+.sort div span:hover{
+    color: #a777ed;
+}
+.sort div{
+    padding: 20px 0;
+}
+.sort div h4{
+    display: inline;
+}
+
+
+.book h1{
+    font-size: 2.2rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-family: 'Poiret One', serif;
+    font-weight: 700;
+}
+.book h1:hover{
+    color: #a777ed;
+}
+.book p {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    text-align: justify;
+    font-weight: 100;
+}
+.book .date{
+   font-size: 1rem;
+}
+.book-cover{
+    float:left; 
+    margin-right: 50px; 
+    background-image: url('assets/images/fallback.png');
+    width: 180px; 
+    height: 269px;
+}
+button:hover{
+    opacity: 0.8;
+}
+
+
+
+
+/* ratings */
+
+.stars::before {
+    content: "★★★★★";
+    letter-spacing: 5px;
+    color: lightgray;
+}
+
+.stars[data-rating="3"]::before {
+    content: "★★★☆☆"; /* Adjust stars based on rating */
+    color: gold;
+}
+.stars[data-rating="2"]::before {
+    content: "★★☆☆☆"; /* Adjust stars based on rating */
+    color: gold;
+}
+.stars[data-rating="1"]::before {
+    content: "★☆☆☆☆"; /* Adjust stars based on rating */
+    color: gold;
+}
+.stars[data-rating="4"]::before {
+    content: "★★★★☆"; /* Adjust stars based on rating */
+    color: gold;
+}.stars[data-rating="5"]::before {
+    content: "★★★★★"; /* Adjust stars based on rating */
+    color: gold;
+}
+
+
+
+/* add and edit page */
+form[action = "/add-book"]{
+    font-size: 1.3rem;
+}
+
+form[action = "/add-book"] input,textarea{
+    background-color: transparent;
+    max-width: 100%;
+    min-width: 100%;
+    border: none;
+    border-bottom:1px solid #d2cece;
+    outline: none;
+    color:#d2cece;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 1.1rem;
+}
+form[action = "/add-book"] label{
+    color: white;
+}
+form[action = "/add-book"]{
+   padding: 50px 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Standard */
+ }
+  
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+  
+
+
+/* notes page */
+.book-heading{
+    font-size: 2.5rem !important;
+    color: #a777ed;
+}
+
+.notes-heading{
+    font-size: 3rem;
+    color: #a777ed;
+    margin-top: 100px;
+}
+.edit{
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    background-color:#a777ed;
+    border-radius: 5px;
+    cursor: pointer;
+    color:white;
+}
+
+
+
+footer{
+    text-align: center;
+    padding: 10px;
+    bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .book-cover{
+        float: none;
+        margin-bottom: 20px;
+       }
+    .sort{
+        display: block;
+    }
+}
+
+
+/* space theme */
+
+.glowing-stars {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    overflow: hidden;
+    
+    background-color: transparent;
+    animation: glow 1s infinite alternate;
+    
+}
+@keyframes glow{
+    from{
+       
+        transform: scale(0.7);
+        opacity: 0.5;
+    }
+    to{
+       
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+#star-container {
+    position: fixed; /* Ensures stars stay in place while scrolling */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: -1; /* Keeps stars behind content */
+    background: radial-gradient(circle at 40% 60%, rgba(111, 0, 255, 0.3), transparent),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.3), transparent),
+    radial-gradient(circle at bottom, #1a002c, #0d0221, #050017, #00010a);
+}
+/* Shooting Star Styling */
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 0 0 8px white;
+    border-radius: 50%;
+    opacity: 0;
+    transform: rotate(-45deg);
+    animation: shoot 2s linear infinite;
+}
+
+/* Shooting Star Animation */
+@keyframes shoot {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+        
+    }
+    100%{
+        opacity: 0.5;
+        
+        transform: translate(-100vw, 100vh) scale(2);
+    }
+}
+

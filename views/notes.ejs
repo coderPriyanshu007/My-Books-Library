@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My library</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <main>
+      <h1 class="name">PRIYANSHU GUSAIN</h1>
+      <div class="book">
+        <div class="book-cover">
+          <img
+            src="<%= cover %>"
+            alt="<%= title %>"
+            height="269px"
+            width="180px"
+          />
+        </div>
+
+        <h1 class="book-heading"><%= title %> - By <%= author %></h1>
+        <a href="/edit-book/<%= isbn %>?edit=true"
+          ><button class="edit">Edit</button></a
+        >
+        <h4 style="margin-top: 20px">ISBN : <%= isbn %></h4>
+        <p class="date">Date Read : <%= date %></p>
+        <div class="stars" data-rating="<%= rating %>"></div>
+        <p><%= intro %></p>
+        <p><a href="/">See books</a>
+          Go to the
+          <a href="https://www.amazon.com/s?k=0806541229">Amazon page</a>
+          for details and reviews.
+        </p>
+        <h1 class="notes-heading">My Notes</h1>
+        <pre style="text-align: justify; text-wrap: wrap; font-size: 1.2rem">
+<%= notes %></pre
+        >
+      </div>
+    </main>
+
+    <script src="/js/space.js"></script>
+
+    <%- include('partials/footer.ejs'); -%>
+  </body>
+</html>

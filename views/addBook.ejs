@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My library</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+
+  <body>
+    <main>
+      <h1
+        style="
+          padding: 20px 0;
+          border-bottom: 2px solid #d2cece;
+          color: #bc9aee;
+          font-size: 4rem;
+        "
+      >
+        <%= edit ?'Edit Book': 'Add New Book' %>
+      </h1>
+      <form action="/add-book" method="post">
+        <label for="title">Title</label><br />
+        <input
+          required
+          class="book-detail"
+          id="title"
+          type="text"
+          name="title"
+          value="<%= edit ? book.title : '' %>"
+        /><br /><br />
+
+        <label for="title">Author</label><br />
+        <input
+          required
+          class="book-detail"
+          id="author"
+          type="text"
+          name="author"
+          value="<%= edit ? book.author : '' %>"
+        /><br /><br />
+
+        <label for="title">ISBN</label><br />
+        <input
+          required
+          class="book-detail"
+          id="isbn"
+          type="text"
+          name="isbn"
+          value="<%= edit ? book.isbn : '' %>"
+        /><br /><br />
+
+        <label for="title">About</label><br />
+        <textarea required class="book-detail" id="about" name="about">
+<%= edit ? book.intro : '' %>
+            </textarea
+        ><br /><br />
+
+        <label for="title">Notes</label><br />
+        <textarea
+          required
+          class="book-detail"
+          id="notes"
+          type="text"
+          name="notes"
+        >
+<%= edit ? book.notes : '' %>
+            </textarea
+        ><br /><br />
+
+        <label for="title">Rating</label><br />
+        <input
+          required
+          class="book-detail"
+          id="rating"
+          type="number"
+          min="1"
+          max="5"
+          name="rating"
+          value="<%= edit ? book.rating : '' %>"
+        /><br /><br />
+
+        <label for="title">Date Read</label><br />
+        <input
+          required
+          class="book-detail"
+          id="date"
+          type="date"
+          name="date"
+          value="<%= edit ? book.date : '' %>"
+        /><br /><br />
+
+        <div>
+          <button
+            type="submit"
+            value="Add"
+            style="
+              display: block;
+              margin: 10px auto;
+              width: 100px;
+              padding: 10px;
+              font-size: 1.1rem;
+              background-color: #ad83eb;
+              color: white;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              border-radius: 5px;
+            "
+          >
+            <%= edit ? 'Save' : 'Add' %>
+          </button>
+        </div>
+      </form>
+
+      <script>
+        const bookFields = document.querySelectorAll(".book-detail");
+
+        bookFields.forEach((field) => {
+          field.addEventListener("focus", (e) => {
+            e.target.style.cssText = "border-bottom : 3px solid #bc9aee ";
+          });
+          field.addEventListener("blur", (e) => {
+            e.target.style.cssText = "border-bottom : 2px solid #d2cece ";
+          });
+        });
+        </script>
+        <script src="/js/space.js"></script>
+
+      <%- include('partials/footer.ejs'); -%>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My library</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+
+  <body>
+    <main>
+      <div class="intro">
+        <h1 class="name">PRIYANSHU GUSAIN</h1>
+        <h2>BOOKS I'VE READ</h2>
+        <p>
+          Tiny summary but detailed notes for each. Use the ISBN number to find
+          it from your local library or anywhere else. This page will constantly
+          update as I read more, so bookmark it if you want to check back in a
+          few months.
+        </p>
+      </div>
+
+      <div class="sort">
+        <div>
+          <h4>Sort by :</h4>
+          <span id="title"> title</span>
+          <span id="date"> date</span>
+          <span id="rating"> rating</span>
+        </div>
+        <a href="/add-book">Add Book</a>
+      </div>
+
+      <div class="books-container">
+        <% if (books) { %> <% books.forEach(book=> { %>
+        <div
+          class="book"
+          data-date="<%= book.date %>"
+          data-title="<%= book.title.toLowerCase() %>"
+          data-rating="<%= book.rating %>"
+        >
+          <div class="book-cover">
+            <img
+              src="<%= book.cover %>"
+              alt="<%= book.title %>"
+              height="269px"
+              width="180px"
+            />
+          </div>
+          <a href="/books/<%= book.isbn %>">
+            <h1><%= book.title %> - By <%= book.author %></h1>
+          </a>
+          <p class="date">Date Read : <%= book.date %></p>
+          <div class="stars" data-rating="<%= book.rating %>"></div>
+          <p><%= book.intro %></p>
+          <p style="margin-top: 40px">
+            <a href="/books/<%= book.isbn %>">Read my notes</a>
+            , or go to the
+            <a href="https://www.amazon.com/s?k=0806541229">Amazon page</a>
+            for details and reviews.
+          </p>
+        </div>
+        <% }) %> <% }else{ %>
+        <h1>An error occured</h1>
+        <% } %>
+      </div>
+    </main>
+    <script src="/js/space.js"></script>
+    
+    <script>
+      let booksContainer = document.querySelector(".books-container");
+      let booksArray = [...booksContainer.children]; // get all the book elements
+      let isAscending = true;
+      let sortBtn = document.querySelectorAll("span");
+
+      sortBtn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          sortBooks(e);
+        }); //add click eventlistener to all sort buttons
+      });
+
+      const sortBooks = (e) => {
+        const sortBy = e.target.id; // set condition for sorting : title,rating or date
+        isAscending = !isAscending;
+        sortBtn.forEach((btn) => {
+          if (btn.id === e.target.id) {
+            // ensures only targeted sort button is changed on click
+            e.target.innerHTML = isAscending
+              ? `${sortBy} &uArr;`
+              : `${sortBy} &dArr;`;
+          } else {
+            btn.innerHTML = `${btn.id}`;
+          }
+        });
+
+        booksArray.sort((a, b) => {
+          // sort books
+          return isAscending
+            ? a.dataset[sortBy].localeCompare(b.dataset[sortBy]) // Ascending order
+            : b.dataset[sortBy].localeCompare(a.dataset[sortBy]); // Descending order
+        });
+
+        console.log(booksArray);
+        booksContainer.innerHTML = ""; // Clear existing books
+        booksArray.forEach((book) => booksContainer.appendChild(book)); // appends books as per new booksArray order
+      };
+    </script>
+    
+<%- include('partials/footer.ejs'); -%>
